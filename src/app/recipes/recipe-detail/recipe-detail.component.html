@@ -1,1 +1,48 @@
-<p>recipe-detail works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="position-relative"
+            style="min-height: 200px;"
+            [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}">
+        
+        <h3 class="text-light position-absolute"
+            style="top: 1rem; left: 1rem;">
+            {{ recipe.name }}
+        </h3>
+        
+        <div class="btn-group position-absolute" 
+            style="bottom: 1rem; right: 1rem;"
+            role="group">
+            
+            <button id="btnGroupDrop1" 
+                    type="button" 
+                    class="btn btn-secondary dropdown-toggle" 
+                    data-toggle="dropdown" 
+                    aria-haspopup="true" 
+                    aria-expanded="false">
+              Manage Recipe
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a class="dropdown-item" href="#">Add To Shopping List</a>
+              <a class="dropdown-item" href="#">Edit Recipe</a>
+              <a class="dropdown-item" href="#">Delete Recipe</a>
+            </div>
+          </div>
+        
+        </div>
+    </div>
+
+    <div class="col-md-12 mt-2">
+        <p>
+            {{ recipe.description }}
+        </p>
+    </div>
+    <div class="col-md-12 mt-2">
+        <h4>Gallery</h4>
+        <img [src]="recipe.imagePath" 
+            [alt]="recipe.name" 
+            style="max-width: 100px;"
+            class="img-thumbnail">
+    </div>
+</div>
+
