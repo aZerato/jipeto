@@ -1,9 +1,17 @@
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-12">
         <app-shopping-edit></app-shopping-edit>
         
         <hr>
 
         <h5>My Shopping list</h5>
+
+        <ul class="list-group">
+            <a class="list-group-item cursor-pointer d-flex justify-content-between align-items-center"
+                *ngFor="let ingredient of ingredients">
+                {{ingredient.name}}
+                <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>    
+            </a>
+        </ul>
     </div>
 </div>
