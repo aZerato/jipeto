@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +8,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class HeaderComponent {
   title:string = "Jipeto";
+
+  @Output()
+  navigationEvent: EventEmitter<{path: string}> = new EventEmitter<{path: string}>();
+
+  onMenuItemSelected(path: string) {
+    this.navigationEvent.emit({path: path});
+  }
 }
