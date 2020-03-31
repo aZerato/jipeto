@@ -1,1 +1,14 @@
-<p>recipe-item works!</p>
+<li class="list-group-item clearfix text-dark position-relative overflow-hidden">
+    
+    <div class="position-absolute w-25 h-100"
+        style="background-size: cover; z-index: 0; right: 0; top: 0;"
+        [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}"></div>
+    
+    <h5 class="mb-1">
+        {{recipe.name}}
+    </h5>
+    <p class="mb-1">
+        {{recipe.description}}
+    </p>
+
+</li>

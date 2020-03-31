@@ -11,19 +11,10 @@
 <div class="row">
     <div class="col-md-12">
         
-        <a href="#"
-            *ngFor="let recipe of recipes"
-            class="list-group-item clearfix border-0 text-dark"
-            [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}">
-            
-            <h5 class="mb-1">
-                {{recipe.name}}
-            </h5>
-            <p class="mb-1">
-                {{recipe.description}}
-            </p>
-        </a>
+        <app-recipe-item 
+            *ngFor="let recipeEl of recipes" 
+            class="list-group" 
+            [recipe]="recipeEl"></app-recipe-item>
 
-        <app-recipe-item></app-recipe-item>
     </div>
 </div>
