@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <form>
+        <form (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="form-group col-md-5">
                     <label for="name">Name</label>
@@ -8,7 +8,9 @@
                             class="form-control"
                             placeholder="Name"
                             name="name"
-                            id="name">
+                            id="name"
+                            #nameInput
+                            required>
                 </div>
                 <div class="form-group col-md-5">
                     <label for="name">Amount</label>
@@ -16,7 +18,9 @@
                             class="form-control"
                             placeholder="Amount"
                             name="amount"
-                            id="amount">
+                            id="amount"
+                            #amountInput
+                            required>
                 </div>
             </div>
             <div class="row">
