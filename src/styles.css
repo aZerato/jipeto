@@ -1,3 +1,11 @@
 .cursor-pointer {
     cursor: pointer;
 }
+
+.color-invert {
+    mix-blend-mode: difference;
+}
+
+.background-position-center {
+    background-position: center;
+}

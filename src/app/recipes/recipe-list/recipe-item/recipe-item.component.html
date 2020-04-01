@@ -1,14 +1,15 @@
-<li class="list-group-item clearfix text-dark position-relative overflow-hidden">
+<li class="list-group-item cursor-pointer">
     
-    <div class="position-absolute w-25 h-100"
-        style="background-size: cover; z-index: 0; right: 0; top: 0;"
+    <div class="img"
         [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}"></div>
     
-    <h5 class="mb-1">
-        {{recipe.name}}
-    </h5>
-    <p class="mb-1">
-        {{recipe.description}}
-    </p>
-
+    <div class="info">
+        <h5 class="mb-1 color-invert">
+            {{recipe.name}}
+        </h5>
+        <p class="mb-1 color-invert">
+            {{recipe.description}}
+        </p>
+    </div>
+    
 </li>
