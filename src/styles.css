@@ -9,3 +9,7 @@
 .background-position-center {
     background-position: center;
 }
+
+.pointer-events-none {
+    pointer-events: none; 
+}
