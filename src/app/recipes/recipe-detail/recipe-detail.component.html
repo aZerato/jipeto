@@ -23,7 +23,7 @@
                 </button>
 
                 <div class="dropdown-menu" aria-labelledby="btnGroupDropRecipe">
-                    <a class="dropdown-item" href="#">Add To Shopping List</a>
+                    <a class="dropdown-item" (click)="addToShoppingList()">Add To Shopping List</a>
                     <a class="dropdown-item" href="#">Edit Recipe</a>
                     <a class="dropdown-item" href="#">Delete Recipe</a>
                 </div>
@@ -31,6 +31,16 @@
             </div>
         
         </div>
+    </div>
+
+    <div class="col-md-12 mt-2">
+        <h4>Ingredients</h4>
+        <ul>
+            <li *ngFor="let ingredient of recipe.ingredients">
+                {{ ingredient.name }} 
+                <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>    
+            </li>
+        </ul>
     </div>
 
     <div class="col-md-12 mt-2">

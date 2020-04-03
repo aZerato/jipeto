@@ -22,6 +22,13 @@ export class ShoppingListService {
         this.ingredientsChanged.emit(this.getIngredients());
     }
 
+    addIngredients(ingredients: Ingredient[]): void {
+        ingredients.forEach(ingredient => {
+            this.ingredients.push(ingredient);    
+        });
+        this.ingredientsChanged.emit(this.getIngredients());
+    }
+
     removeIngredient(ingredientIndex: number): void {
         this.ingredients.splice(ingredientIndex, 1);
         this.ingredientsChanged.emit(this.getIngredients());
