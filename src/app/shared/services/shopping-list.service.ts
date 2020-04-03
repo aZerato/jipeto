@@ -5,12 +5,26 @@ import { Ingredient } from '../models/ingredient.model';
     providedIn: 'root'
 })
 export class ShoppingListService {
-    private ingredients: Ingredient[] = [];
+    private ingredients: Ingredient[] = [
+        new Ingredient('Tomato', 5),
+        new Ingredient('Ananas', 3),
+    ];
 
-    ingredientAdded: EventEmitter<Ingredient> = new EventEmitter<Ingredient>();
+    ingredientsChanged: EventEmitter<Ingredient[]> = new EventEmitter<Ingredient[]>();
 
-    addIngredient(ingredient: Ingredient) {
+    getIngredients(): Ingredient[] {
+        // slice to remove object reference.
+        return this.ingredients.slice();
+    } 
+
+    addIngredient(ingredient: Ingredient): void {
         this.ingredients.push(ingredient);
-        this.ingredientAdded.emit(ingredient);
+        this.ingredientsChanged.emit(this.getIngredients());
     }
+
+    removeIngredient(ingredientIndex: number): void {
+        this.ingredients.splice(ingredientIndex, 1);
+        this.ingredientsChanged.emit(this.getIngredients());
+    }
+
 }
