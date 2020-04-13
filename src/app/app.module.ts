@@ -22,6 +22,9 @@ const appRoutes: Routes = [
     path: 'recipes', 
     component: RecipesComponent
   },{ 
+    path: 'recipes/:id', 
+    component: RecipeDetailComponent
+  },{ 
     path: 'shopping', 
     component: ShoppingListComponent
   }

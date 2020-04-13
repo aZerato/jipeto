@@ -7,6 +7,7 @@ import { ShoppingListService } from '../../shared/services/shopping-list.service
 export class RecipesService {
     private recipes: Recipe[] = [
         new Recipe(
+            1,
             "A test recipe", 
             "This is simply a test", 
             "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1537973085542.jpeg",
@@ -15,6 +16,7 @@ export class RecipesService {
                 new Ingredient('Fish', 1),
             ]),
         new Recipe(
+            2,
             "Another recipe", 
             "This is simply an another test", 
             "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/8/6/0/WU2301_Four-Cheese-Pepperoni-Pizzadilla_s4x3.jpg.rend.hgtvcom.826.620.suffix/1565115622965.jpeg",
@@ -32,6 +34,10 @@ export class RecipesService {
     getRecipes(): Recipe[] {
         // slice to remove direct reference.
         return this.recipes.slice();
+    }
+
+    getRecipeById(id: number): Recipe {
+        return this.recipes.find((recipe) => recipe.id == id);
     }
 
     addIngredientsToShoppingList(ingredients: Ingredient[])
