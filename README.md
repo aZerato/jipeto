@@ -1,5 +1,13 @@
 # Jipeto
 
+## Intro
+
+![Image of Jipeto Angular App](https://github.com/aZerato/jipeto/blob/master/readme.demo.png)
+
+[Angular 9 formation](https://www.udemy.com/course/the-complete-guide-to-angular-2/)
+
+## Angular Project
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
 ## Development server
