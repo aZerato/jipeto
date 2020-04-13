@@ -8,11 +8,4 @@ import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/cor
 })
 export class HeaderComponent {
   title:string = "Jipeto";
-
-  @Output()
-  navigationEvent: EventEmitter<{path: string}> = new EventEmitter<{path: string}>();
-
-  onMenuItemSelected(path: string) {
-    this.navigationEvent.emit({path: path});
-  }
 }

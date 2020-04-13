@@ -1,6 +1,9 @@
 <header>
     <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg scrolling-navbar">
-        <a class="navbar-brand" href="#">{{ title }}</a>
+        <a class="navbar-brand"
+          routerLink="/">
+          {{ title }}
+        </a>
         <button class="navbar-toggler" 
                 type="button" 
                 data-toggle="collapse"
@@ -14,11 +17,17 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" 
-                (click)="onMenuItemSelected('recipes')">Recipes</a>
+                routerLink="/recipes"
+                routerLinkActive="active">
+                Recipes
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" 
-                (click)="onMenuItemSelected('shopping')">Shopping</a>
+                routerLink="/shopping"
+                routerLinkActive="active">
+                Shopping
+              </a>
             </li>
           </ul>
           <ul class="navbar-nav">

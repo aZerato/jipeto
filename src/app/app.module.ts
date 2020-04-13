@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -12,6 +13,19 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { CollapseDirective } from './shared/directives/collapse.directive';
+
+const appRoutes: Routes = [
+  { 
+    path: '', 
+    component: RecipesComponent
+  },{ 
+    path: 'recipes', 
+    component: RecipesComponent
+  },{ 
+    path: 'shopping', 
+    component: ShoppingListComponent
+  }
+];
 
 @NgModule({
   declarations: [
@@ -28,7 +42,8 @@ import { CollapseDirective } from './shared/directives/collapse.directive';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
