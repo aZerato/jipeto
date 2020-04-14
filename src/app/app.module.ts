@@ -14,6 +14,9 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { CollapseDirective } from './shared/directives/collapse.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
+import { PageForbiddenComponent } from './page-forbidden/page-forbidden.component';
+import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
+import { RecipesService } from './recipes/services/recipes.service';
 
 @NgModule({
   declarations: [
@@ -27,14 +30,18 @@ import { AppRoutingModule } from './app-routing.module';
     ShoppingEditComponent,
     DropdownDirective,
     CollapseDirective,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    PageForbiddenComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    RecipesService,
+    RecipesResolverService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
