@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,31 +13,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { CollapseDirective } from './shared/directives/collapse.directive';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
-const appRoutes: Routes = [
-  { 
-    path: '', 
-    component: RecipesComponent
-  },{ 
-    path: 'recipes', 
-    component: RecipesComponent,
-    children: [
-      { 
-        path: ':id', 
-        component: RecipeDetailComponent
-      }
-    ]
-  },{ 
-    path: 'shopping', 
-    component: ShoppingListComponent
-  },{ 
-    path: 'not-found', 
-    component: PageNotFoundComponent
-  },{ 
-    path: '**', 
-    redirectTo: 'not-found'
-  }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -57,7 +32,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
