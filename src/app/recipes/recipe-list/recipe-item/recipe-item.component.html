@@ -1,16 +1,19 @@
-<li class="list-group-item cursor-pointer" 
-    (click)="onRecipeSelected()">
+<li class="list-group-item cursor-pointer">
     
-    <div class="img"
-        [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}"></div>
-    
-    <div class="info">
-        <h5 class="mb-1 color-invert">
-            {{recipe.name}}
-        </h5>
-        <p class="mb-1 color-invert">
-            {{recipe.description}}
-        </p>
-    </div>
+    <a [routerLink]="['/recipes', recipe.id]">
+
+        <div class="img"
+            [ngStyle]="{'background-image': 'url(' + recipe.imagePath + ')'}"></div>
+        
+        <div class="info">
+            <h5 class="mb-1 color-invert text-dark">
+                {{recipe.name}}
+            </h5>
+            <p class="mb-1 color-invert text-dark">
+                {{recipe.description}}
+            </p>
+        </div>
+        
+    </a>
     
 </li>

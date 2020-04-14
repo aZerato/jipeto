@@ -13,6 +13,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { CollapseDirective } from './shared/directives/collapse.directive';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { 
@@ -20,13 +21,22 @@ const appRoutes: Routes = [
     component: RecipesComponent
   },{ 
     path: 'recipes', 
-    component: RecipesComponent
-  },{ 
-    path: 'recipes/:id', 
-    component: RecipeDetailComponent
+    component: RecipesComponent,
+    children: [
+      { 
+        path: ':id', 
+        component: RecipeDetailComponent
+      }
+    ]
   },{ 
     path: 'shopping', 
     component: ShoppingListComponent
+  },{ 
+    path: 'not-found', 
+    component: PageNotFoundComponent
+  },{ 
+    path: '**', 
+    redirectTo: 'not-found'
   }
 ];
 
@@ -41,7 +51,8 @@ const appRoutes: Routes = [
     ShoppingListComponent,
     ShoppingEditComponent,
     DropdownDirective,
-    CollapseDirective
+    CollapseDirective,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

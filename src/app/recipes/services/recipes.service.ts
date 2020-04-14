@@ -29,8 +29,6 @@ export class RecipesService {
     
     constructor(private shoppingListService: ShoppingListService) { }
 
-    recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
-
     getRecipes(): Recipe[] {
         // slice to remove direct reference.
         return this.recipes.slice();
