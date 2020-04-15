@@ -1,5 +1,4 @@
-<div class="row"
-    *ngIf="recipe; else recipeNull">
+<div class="row">
     <div class="col-md-12">
         <div class="position-relative background-position-center"
             style="min-height: 200px;"
@@ -77,10 +76,6 @@
     </div>
 
 </div>
-
-<ng-template #recipeNull>
-    <div class="alert alert-primary">Please select a recipe</div>
-</ng-template>
 
 <ng-template #modalContent let-modal>
     <div class="modal-header">

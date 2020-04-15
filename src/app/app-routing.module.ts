@@ -6,6 +6,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeNoSelectedComponent } from './recipes/recipe-no-selected/recipe-no-selected.component';
 
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { PageForbiddenComponent } from './shared/components/page-forbidden/page-forbidden.component';
@@ -13,12 +14,17 @@ import { PageForbiddenComponent } from './shared/components/page-forbidden/page-
 const appRoutes: Routes = [
   { 
     path: '', 
-    component: RecipesComponent
+    redirectTo: '/recipes',
+    pathMatch: 'full'
   },
   { 
     path: 'recipes', 
     component: RecipesComponent,
     children: [
+      { 
+        path: '', 
+        component: RecipeNoSelectedComponent
+      },
       { 
         path: 'new', 
         component: RecipeEditComponent

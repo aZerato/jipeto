@@ -18,6 +18,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeNoSelectedComponent } from './recipes/recipe-no-selected/recipe-no-selected.component';
 
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { PageForbiddenComponent } from './shared/components/page-forbidden/page-forbidden.component';
@@ -34,6 +35,7 @@ import { FormValidationMessageComponent } from './shared/components/form-validat
     RecipeDetailComponent,
     RecipeItemComponent,
     RecipeEditComponent,
+    RecipeNoSelectedComponent,
     
     ShoppingListComponent,
     ShoppingEditComponent,
