@@ -41,7 +41,7 @@
 
                     <a class="dropdown-item" 
                         ngbDropdownItem
-                        [routerLink]="['delete']">
+                        (click)="openDeleteModalConfirmation(modalContent)">
                         Delete Recipe
                     </a>
                 </div>
@@ -81,3 +81,22 @@
 <ng-template #recipeNull>
     <div class="alert alert-primary">Please select a recipe</div>
 </ng-template>
+
+<ng-template #modalContent let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Confirm recipe deletion</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>
+            Do you want delete "<i>{{ recipe.name }}</i>" recipe ?
+        </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="onCloseDeleteModalConfirmation()">
+          Save
+        </button>
+    </div>
+  </ng-template>

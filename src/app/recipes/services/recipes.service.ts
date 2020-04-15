@@ -26,15 +26,19 @@ export class RecipesService {
                 new Ingredient('Chili', 2),
             ])
       ];
+
+    recipesUpdated: EventEmitter<boolean> = new EventEmitter<boolean>()
     
     constructor(private shoppingListService: ShoppingListService) { }
 
-    getRecipes(): Recipe[] {
+    getRecipes(): Recipe[] 
+    {
         // slice to remove direct reference.
         return this.recipes.slice();
     }
 
-    getRecipeById(id: number): Recipe {
+    getRecipeById(id: number): Recipe 
+    {
         return this.recipes.find((recipe) => recipe.id == id);
     }
 
@@ -43,7 +47,8 @@ export class RecipesService {
         this.shoppingListService.addIngredients(ingredients);
     }
 
-    addRecipe(newRecipe: Recipe) : number {
+    addRecipe(newRecipe: Recipe) : number 
+    {
         const maxRecipeId = Math.max.apply(Math, this.recipes.map((recipe) => 
             { return recipe.id; }));
         
@@ -51,10 +56,13 @@ export class RecipesService {
         
         this.recipes.push(newRecipe);
 
+        this.recipesUpdated.emit(true);
+
         return newRecipe.id;
     }
 
-    updateRecipe(updateRecipe: Recipe) : void {
+    updateRecipe(updateRecipe: Recipe) : void 
+    {
         const recipeIndex = this.recipes.findIndex((recipe) => {
             return recipe.id === updateRecipe.id;
         });
@@ -62,10 +70,18 @@ export class RecipesService {
         this.recipes.splice(recipeIndex, 1);
         
         this.recipes.push(updateRecipe);
+
+        this.recipesUpdated.emit(true);
     }
 
-    removeRecipe(recipeIndex: number) : void 
+    removeRecipe(recipeId: number) : void 
     {
+        const recipeIndex = this.recipes.findIndex((recipe) => {
+            return recipe.id === recipeId;
+        });
+
         this.recipes.splice(recipeIndex, 1);
+
+        this.recipesUpdated.emit(true);
     }
 }
