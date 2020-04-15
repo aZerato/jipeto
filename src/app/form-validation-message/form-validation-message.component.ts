@@ -13,7 +13,7 @@ export class FormValidationMessageComponent implements OnInit {
   ctrl: FormControl;
 
   @Input()
-  formCtrlName: string;
+  ctrlName: string;
 
   _input: Node;
   _ctrlToValidate: AbstractControl;
@@ -21,16 +21,15 @@ export class FormValidationMessageComponent implements OnInit {
   constructor(private _renderer2: Renderer2) {  }
 
   ngOnInit() {
-    this._input = document.getElementsByName(this.formCtrlName)[0];
+    this._ctrlToValidate = this.ctrl.get(this.ctrlName);
+    this._input = document.getElementsByName(this.ctrlName)[0];
   }
 
   get errorMessage() {
     
-    if (
-      !this.ctrl.valid &&
-      this.ctrl.touched
+    if (!this._ctrlToValidate.valid &&
+      this._ctrlToValidate.touched
     ) {
-      
       this._renderer2.addClass(this._input, 'invalid');
       return 'Error';
     }

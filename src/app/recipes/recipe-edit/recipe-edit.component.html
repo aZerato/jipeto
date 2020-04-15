@@ -16,33 +16,38 @@
                                 name="recipe.name">
                         
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm.get('recipe.name')"
-                            [formCtrlName]="'recipe.name'">
+                            [ctrl]="this.recipeForm"
+                            [ctrlName]="'recipe.name'">
                         </app-form-validation-message>
 
                     </div>
                     
-                    <!-- <div class="form-group col-md-12">
+                    <div class="form-group col-md-12">
                         <label for="name">Description</label>
                         <textarea
                                 class="form-control"
-                                name="description"
-                                id="description"
-                                #descriptionInput
-                                required>
+                                name="recipe.description"
+                                formControlName="description">
                         </textarea>
+
+                        <app-form-validation-message
+                            [ctrl]="this.recipeForm"
+                            [ctrlName]="'recipe.description'">
+                        </app-form-validation-message>
                     </div>
 
                     <div class="form-group col-md-12">
                         <label for="name">Cover Image</label>
-                        <input
-                                type="url"
+                        <input type="url"
                                 class="form-control"
-                                name="imagePath"
-                                id="imagePath"
-                                #imagePathInput
-                                required>
-                    </div> -->
+                                name="recipe.imagePath"
+                                formControlName="imagePath">
+                        
+                        <app-form-validation-message
+                            [ctrl]="this.recipeForm"
+                            [ctrlName]="'recipe.imagePath'">
+                        </app-form-validation-message>
+                    </div>
 
                 </div>
             </div>
