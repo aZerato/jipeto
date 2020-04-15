@@ -4,6 +4,9 @@
             (submit)="onSubmit()">
             
             <div formGroupName="recipe">
+                <h4>Recipe</h4>
+
+                <hr>
 
                 <div class="row">
                     
@@ -52,10 +55,76 @@
 
                 </div>
             </div>
+
+            <div formGroupName="ingredient">
+
+                <h4>Ingredients</h4>
+
+                <hr>
+
+                <div class="row">
+                    <div class="form-group col-md-5">
+                        <label for="name">Name</label>
+                        <input type="text" 
+                                class="form-control"
+                                placeholder="Name"
+                                formControlName="name"
+                                name="ingredient.name">
+                        
+                        <app-form-validation-message
+                            [ctrl]="this.recipeForm"
+                            [ctrlName]="'ingredient.name'">
+                        </app-form-validation-message>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <label for="name">Amount</label>
+                        <input type="number" 
+                                class="form-control"
+                                placeholder="Amount"
+                                formControlName="amount"
+                                name="ingredient.amount">
+                        
+                        <app-form-validation-message
+                            [ctrl]="this.recipeForm"
+                            [ctrlName]="'ingredient.amount'">
+                        </app-form-validation-message>
+                    </div>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn-group">
+                            <button class="btn btn-outline-success"
+                                (click)="addIngredient()"    
+                                type="button">
+                                    Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 mt-3">
+                        <ul class="list-group">
+                            <a class="list-group-item cursor-pointer d-flex justify-content-between align-items-center"
+                                *ngFor="let ingredient of recipe.ingredients; let ingredientIndex = index;">
+                                {{ingredient.name}}
+                                <button class="btn btn-outline-danger" (click)="onDeleteIngedient(ingredientIndex)">Delete</button>
+                                <span class="badge badge-primary badge-pill">{{ingredient.amount}}</span>    
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+
             <div class="row">
                 <div class="col-md-12">
-                    <div class="btn-group">
-                        <button class="btn btn-outline-success" type="submit">Add</button>
+                    <div class="btn-group float-right">
+                        <button class="btn btn-outline-success" type="submit">Save</button>
                         <button class="btn btn-outline-warning" type="reset">Clear</button>
                     </div>
                 </div>

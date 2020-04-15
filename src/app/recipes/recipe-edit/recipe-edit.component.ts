@@ -40,22 +40,39 @@ export class RecipeEditComponent implements OnInit {
         name: new FormControl(this.recipe.name, Validators.required),
         description: new FormControl(this.recipe.description, Validators.required),
         imagePath: new FormControl(this.recipe.imagePath, Validators.required)
+      }),
+      ingredient: new FormGroup({
+        name: new FormControl(''),
+        amount: new FormControl('')
       })
     });
   }
 
-  onSubmit(): void {
+  addIngredient(): void 
+  {
+    this.recipe.ingredients.push(new Ingredient(
+      this.recipeForm.value.ingredient.name, 
+      this.recipeForm.value.ingredient.amount));
+  }
+
+  onDeleteIngedient(ingredientIndex: number): void
+  {
+    this.recipe.ingredients.splice(ingredientIndex, 1);
+  }
+
+  onSubmit(): void 
+  {
     if (this.recipeForm.dirty && this.recipeForm.valid)
     {
+      this.recipe = Object.assign(this.recipe, this.recipeForm.value.recipe);
       // new
       if (this.recipe.id === 0)
       {
-        this.recipe.id = this.recipesService.addRecipe(this.recipeForm.value.recipe);
+        this.recipe.id = this.recipesService.addRecipe(this.recipe);
       }
       // update
       else
       {
-        this.recipe = Object.assign(this.recipe, this.recipeForm.value.recipe);
         this.recipesService.updateRecipe(this.recipe);
       }
 
