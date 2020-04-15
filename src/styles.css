@@ -17,3 +17,11 @@
 .invalid {
     border: 1px solid #dc3545;
 }
+
+.truncate {
+    display: block;
+    max-width: 220px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -24,6 +24,16 @@ export class RecipesService {
                 new Ingredient('Cucumber', 3),
                 new Ingredient('Salade', 1),
                 new Ingredient('Chili', 2),
+            ]),
+        new Recipe(
+            3,
+            "Chili con carne",
+            "The most amazing recipe of Chili con carne",
+            "https://pinchofyum.com/wp-content/uploads/Sunday-Chili-Square.jpg",
+            [
+                new Ingredient('Jalapenos', 1),
+                new Ingredient('Beef', 1),
+                new Ingredient('Chili', 1),
             ])
       ];
 
