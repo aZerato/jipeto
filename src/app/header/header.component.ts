@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,4 +8,5 @@ import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/cor
 })
 export class HeaderComponent {
   title:string = "Jipeto";
+  isMenuCollapsed: boolean = true;
 }

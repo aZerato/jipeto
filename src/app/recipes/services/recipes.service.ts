@@ -63,4 +63,9 @@ export class RecipesService {
         
         this.recipes.push(updateRecipe);
     }
+
+    removeRecipe(recipeIndex: number) : void 
+    {
+        this.recipes.splice(recipeIndex, 1);
+    }
 }

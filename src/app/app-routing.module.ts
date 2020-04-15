@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { PageForbiddenComponent } from './page-forbidden/page-forbidden.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { PageForbiddenComponent } from './shared/components/page-forbidden/page-forbidden.component';
 
 const appRoutes: Routes = [
   { 
