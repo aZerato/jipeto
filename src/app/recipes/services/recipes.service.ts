@@ -43,8 +43,24 @@ export class RecipesService {
         this.shoppingListService.addIngredients(ingredients);
     }
 
-    addRecipe(newRecipe: Recipe) {
-        newRecipe.id = this.recipes[this.recipes.length - 1].id + 1;
+    addRecipe(newRecipe: Recipe) : number {
+        const maxRecipeId = Math.max.apply(Math, this.recipes.map((recipe) => 
+            { return recipe.id; }));
+        
+        newRecipe.id = maxRecipeId + 1;
+        
         this.recipes.push(newRecipe);
+
+        return newRecipe.id;
+    }
+
+    updateRecipe(updateRecipe: Recipe) : void {
+        const recipeIndex = this.recipes.findIndex((recipe) => {
+            return recipe.id === updateRecipe.id;
+        });
+
+        this.recipes.splice(recipeIndex, 1);
+        
+        this.recipes.push(updateRecipe);
     }
 }

@@ -25,7 +25,10 @@
 
                 <div class="dropdown-menu" aria-labelledby="btnGroupDropRecipe">
                     <a class="dropdown-item" (click)="addToShoppingList()">Add To Shopping List</a>
-                    <a class="dropdown-item" href="#">Edit Recipe</a>
+                    <a class="dropdown-item"
+                        [routerLink]="['edit']">
+                        Edit Recipe
+                    </a>
                     <a class="dropdown-item" href="#">Delete Recipe</a>
                 </div>
 
