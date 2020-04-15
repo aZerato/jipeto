@@ -42,4 +42,9 @@ export class RecipesService {
     {
         this.shoppingListService.addIngredients(ingredients);
     }
+
+    addRecipe(newRecipe: Recipe) {
+        newRecipe.id = this.recipes[this.recipes.length - 1].id + 1;
+        this.recipes.push(newRecipe);
+    }
 }

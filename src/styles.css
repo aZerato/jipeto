@@ -13,3 +13,7 @@
 .pointer-events-none {
     pointer-events: none; 
 }
+
+.invalid {
+    border: 1px solid #dc3545;
+}

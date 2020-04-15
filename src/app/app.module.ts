@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageForbiddenComponent } from './page-forbidden/page-forbidden.component';
 import { RecipesResolverService } from './recipes/services/recipes-resolver.service';
 import { RecipesService } from './recipes/services/recipes.service';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { FormValidationMessageComponent } from './form-validation-message/form-validation-message.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +28,21 @@ import { RecipesService } from './recipes/services/recipes.service';
     RecipeListComponent,
     RecipeDetailComponent,
     RecipeItemComponent,
+    RecipeEditComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
-    DropdownDirective,
-    CollapseDirective,
+
+    FormValidationMessageComponent,
     PageNotFoundComponent,
-    PageForbiddenComponent
+    PageForbiddenComponent,
+    
+    DropdownDirective,
+    CollapseDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [
