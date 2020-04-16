@@ -2,9 +2,17 @@
     <div class="col-md-12">
         <form [formGroup]="recipeForm"
             (submit)="onSubmit()">
-            
+
             <div formGroupName="recipe">
-                <h4>Recipe</h4>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>Recipe</h4>
+                    </div>
+                    <div class="col-md-8">
+                        <ng-template [ngTemplateOutlet]="buttons"></ng-template>
+                    </div>
+                </div>
 
                 <hr>
 
@@ -16,10 +24,11 @@
                                 class="form-control"
                                 placeholder="Name"
                                 formControlName="name"
-                                name="recipe.name">
+                                name="recipe.name"
+                                #recipeName>
                         
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm"
+                            [ctrl]="recipeForm"
                             [ctrlName]="'recipe.name'">
                         </app-form-validation-message>
 
@@ -34,7 +43,7 @@
                         </textarea>
 
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm"
+                            [ctrl]="recipeForm"
                             [ctrlName]="'recipe.description'">
                         </app-form-validation-message>
                     </div>
@@ -45,12 +54,19 @@
                                 placeholder="Image cover url"
                                 class="form-control"
                                 name="recipe.imagePath"
-                                formControlName="imagePath">
+                                formControlName="imagePath"
+                                #imagePath>
                         
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm"
+                            [ctrl]="recipeForm"
                             [ctrlName]="'recipe.imagePath'">
                         </app-form-validation-message>
+
+                        <img *ngIf="imagePath.value"
+                            [alt]="recipeName.value" 
+                            style="max-width: 100px;"
+                            class="img-thumbnail mt-3"
+                            [src]="imagePath.value">
                     </div>
 
                 </div>
@@ -72,7 +88,7 @@
                                 name="ingredient.name">
                         
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm"
+                            [ctrl]="recipeForm"
                             [ctrlName]="'ingredient.name'">
                         </app-form-validation-message>
                     </div>
@@ -86,7 +102,7 @@
                                 name="ingredient.amount">
                         
                         <app-form-validation-message
-                            [ctrl]="this.recipeForm"
+                            [ctrl]="recipeForm"
                             [ctrlName]="'ingredient.amount'">
                         </app-form-validation-message>
                     </div>
@@ -120,26 +136,31 @@
             </div>
 
             <hr>
+            
+            <ng-template [ngTemplateOutlet]="buttons"></ng-template>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="btn-group float-right">
-                        <button class="btn btn-outline-success" 
-                                type="submit">
-                                Save
-                        </button>
-                        <button class="btn btn-outline-warning" 
-                                type="reset">
-                                Clear
-                        </button>
-                        <button class="btn btn-outline-danger" 
-                                type="button"
-                                (click)="onCancel()">
-                                Cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 </div>
+
+<ng-template #buttons>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="btn-group float-right">
+                <button class="btn btn-outline-success" 
+                        type="submit">
+                        Save
+                </button>
+                <button class="btn btn-outline-warning" 
+                        type="reset">
+                        Clear
+                </button>
+                <button class="btn btn-outline-danger" 
+                        type="button"
+                        (click)="onCancel()">
+                        Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</ng-template>
