@@ -46,17 +46,23 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         imagePath: new FormControl(this.recipe.imagePath, Validators.required)
       }),
       ingredient: new FormGroup({
-        name: new FormControl(''),
-        amount: new FormControl('')
+        name: new FormControl('', Validators.required),
+        amount: new FormControl('', [ 
+          Validators.required, 
+          Validators.pattern(/^[1-9]+[0-9]*$/)
+        ])
       })
     });
   }
 
   addIngredient(): void 
   {
-    this.recipe.ingredients.push(new Ingredient(
-      this.recipeForm.value.ingredient.name, 
-      this.recipeForm.value.ingredient.amount));
+    if(this.recipeForm.get('ingredient').valid)
+    {
+      this.recipe.ingredients.push(new Ingredient(
+        this.recipeForm.value.ingredient.name, 
+        this.recipeForm.value.ingredient.amount));
+    }
   }
 
   onDeleteIngedient(ingredientIndex: number): void
@@ -66,7 +72,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   onSubmit(): void 
   {
-    if (this.recipeForm.dirty && this.recipeForm.valid)
+    if (this.recipeForm.dirty && this.recipeForm.get('recipe').valid)
     {
       this.recipe = Object.assign(this.recipe, this.recipeForm.value.recipe);
       // new

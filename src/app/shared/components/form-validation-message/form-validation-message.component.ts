@@ -1,5 +1,6 @@
-import { Component, Input, ElementRef, Renderer2, OnInit } from '@angular/core';
+import { Component, Input, Renderer2, OnInit } from '@angular/core';
 import { FormControl, AbstractControl } from '@angular/forms';
+import { FormValidationService } from '../../services/form-validation.service';
 
 @Component({
   selector: 'app-form-validation-message',
@@ -25,13 +26,19 @@ export class FormValidationMessageComponent implements OnInit {
     this._input = document.getElementsByName(this.ctrlName)[0];
   }
 
-  get errorMessage() {
-    
-    if (!this._ctrlToValidate.valid &&
-      this._ctrlToValidate.touched
-    ) {
-      this._renderer2.addClass(this._input, 'invalid');
-      return 'Error';
+  get errorMessage() 
+  {
+    for (let errorType in this._ctrlToValidate.errors) 
+    {
+      if (
+        this._ctrlToValidate.errors.hasOwnProperty(errorType) &&
+        this._ctrlToValidate.touched
+      ) 
+      {  
+        this._renderer2.addClass(this._input, 'invalid');
+
+        return FormValidationService.getValidatorErrorMessage(errorType);
+      }
     }
   
     this._renderer2.removeClass(this._input, 'invalid');
