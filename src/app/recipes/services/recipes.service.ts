@@ -1,4 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { Recipe } from '../models/recipe.model';
 import { Ingredient } from '../../shared/models/ingredient.model';
 import { ShoppingListService } from '../../shared/services/shopping-list.service';
@@ -37,7 +39,7 @@ export class RecipesService {
             ])
       ];
 
-    recipesUpdated: EventEmitter<boolean> = new EventEmitter<boolean>()
+    recipesUpdated: Subject<boolean> = new Subject<boolean>()
     
     constructor(private shoppingListService: ShoppingListService) { }
 
@@ -66,7 +68,7 @@ export class RecipesService {
         
         this.recipes.push(newRecipe);
 
-        this.recipesUpdated.emit(true);
+        this.recipesUpdated.next(true);
 
         return newRecipe.id;
     }
@@ -81,7 +83,7 @@ export class RecipesService {
         
         this.recipes.push(updateRecipe);
 
-        this.recipesUpdated.emit(true);
+        this.recipesUpdated.next(true);
     }
 
     removeRecipe(recipeId: number) : void 
@@ -92,6 +94,6 @@ export class RecipesService {
 
         this.recipes.splice(recipeIndex, 1);
 
-        this.recipesUpdated.emit(true);
+        this.recipesUpdated.next(true);
     }
 }

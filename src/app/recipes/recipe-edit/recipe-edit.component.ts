@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Data, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { Recipe } from '../models/recipe.model';
 import { RecipesService } from 'src/app/recipes/services/recipes.service';
-import { ActivatedRoute, Data, Router } from '@angular/router';
 import { Ingredient } from 'src/app/shared/models/ingredient.model';
-
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html'
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
   recipe: Recipe = new Recipe(0, '', '', '', []);
-
   recipeForm: FormGroup;
+  dataSubscription: Subscription;
   
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +25,17 @@ export class RecipeEditComponent implements OnInit {
   ngOnInit(): void {
     this.createFormGroup();
 
-    this.route.data.subscribe((data: Data) => {
+    this.dataSubscription = this.route.data.subscribe((data: Data) => {
       if (data['recipe'])
       {
         this.recipe = data['recipe'];
         this.createFormGroup();
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.dataSubscription.unsubscribe();
   }
 
   createFormGroup() {
