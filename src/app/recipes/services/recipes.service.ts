@@ -39,7 +39,7 @@ export class RecipesService {
             ])
       ];
 
-    recipesUpdated: Subject<boolean> = new Subject<boolean>()
+    recipesUpdated: Subject<Recipe[]> = new Subject<Recipe[]>()
     
     constructor(private shoppingListService: ShoppingListService) { }
 
@@ -68,7 +68,7 @@ export class RecipesService {
         
         this.recipes.push(newRecipe);
 
-        this.recipesUpdated.next(true);
+        this.recipesUpdated.next(this.getRecipes());
 
         return newRecipe.id;
     }
@@ -83,7 +83,7 @@ export class RecipesService {
         
         this.recipes.push(updateRecipe);
 
-        this.recipesUpdated.next(true);
+        this.recipesUpdated.next(this.getRecipes());
     }
 
     removeRecipe(recipeId: number) : void 
@@ -94,6 +94,6 @@ export class RecipesService {
 
         this.recipes.splice(recipeIndex, 1);
 
-        this.recipesUpdated.next(true);
+        this.recipesUpdated.next(this.getRecipes());
     }
 }
