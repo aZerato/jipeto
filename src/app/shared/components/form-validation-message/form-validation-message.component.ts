@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, AbstractControl } from '@angular/forms';
 import { FormValidationService } from '../../services/form-validation.service';
 
@@ -19,11 +19,10 @@ export class FormValidationMessageComponent implements OnInit {
   _input: Node;
   _ctrlToValidate: AbstractControl;
 
-  constructor(private _renderer2: Renderer2) {  }
+  constructor() {  }
 
   ngOnInit() {
     this._ctrlToValidate = this.ctrl.get(this.ctrlName);
-    this._input = document.getElementsByName(this.ctrlName)[0];
   }
 
   get errorMessage() 
@@ -34,14 +33,10 @@ export class FormValidationMessageComponent implements OnInit {
         this._ctrlToValidate.errors.hasOwnProperty(errorType) &&
         this._ctrlToValidate.touched
       ) 
-      {  
-        this._renderer2.addClass(this._input, 'invalid');
-
+      {
         return FormValidationService.getValidatorErrorMessage(errorType);
       }
     }
-  
-    this._renderer2.removeClass(this._input, 'invalid');
 
     return null;
   }
